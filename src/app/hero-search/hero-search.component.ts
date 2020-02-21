@@ -28,12 +28,15 @@ export class HeroSearchComponent implements OnInit {
   ngOnInit(): void {
     this.heroes$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
+      // espera hasta que se deja de escribir durante 300 milisegundos.
       debounceTime(300),
 
       // ignore new term if same as previous term
+      // Asegura que una solicitud se envía sólo si el texto del filtro ha cambiado
       distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
+      // Llama al sevicio de búsqueda para cada término de búsqueda que pasa por debounce y distinctUntilChanged
       switchMap((term: string) => this.heroService.searchHeroes(term)),
     );
   }

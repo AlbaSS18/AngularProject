@@ -10,6 +10,10 @@ export class HeroDetails {
     navigateToGetDetails(): promise.Promise<any> {
         return browser.get('/detail/12');
     }
+
+    getNameHeroe(): ElementFinder {
+        return element(by.xpath('/html/body/app-root/app-dashboard/div/a[1]/div/h4'));
+    }
     
     getBottonGoBack (): ElementFinder {
         return element(by.id('GoBack'));
@@ -21,6 +25,10 @@ export class HeroDetails {
 
     getBottonSave (): ElementFinder {
         return element(by.id('save'));
+    }
+
+    getFirstHero (): ElementFinder {
+        return element(by.xpath('/html/body/app-root/app-dashboard/div/a[1]'));
     }
 
     

@@ -26,7 +26,10 @@ describe ('DashBoard', () => {
     })
 
     it('Should search heroes', () => {
-        
+        const inputSearch = dashBoard.getInputSearch();
+        inputSearch.sendKeys("nar");
+        browser.sleep(4000);
+        expect (dashBoard.getResultSearch().getText()).toEqual("Narco");
     })
 
     it('If I click Heroes, should redirect to hero details list', () => {
@@ -34,7 +37,7 @@ describe ('DashBoard', () => {
         listHeroes.click();
         expect(browser.driver.getCurrentUrl()).toContain('/heroes');
         browser.sleep(4000);
-        //expect (dashBoard.getMessages().count()).toEqual(1);
+        expect (dashBoard.getMessages().count()).toEqual(2);
     });
 
 

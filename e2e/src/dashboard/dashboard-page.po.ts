@@ -20,10 +20,18 @@ export class DashBoard {
     }
 
     getMessages(): ElementArrayFinder{
-        return element.all(by.xpath("/html/body/app-root/app-messages/div"));
+        return element.all(by.xpath("/html/body/app-root/app-messages/div/div"));
     }
 
     navigateToHeroes(): promise.Promise<any> {
         return browser.get('/heroes');
+    }
+
+    getInputSearch(): ElementFinder{
+        return element(by.id('search-box'));
+    }
+
+    getResultSearch(): ElementFinder {
+        return element(by.xpath("/html/body/app-root/app-dashboard/app-hero-search/div/ul/li/a"));
     }
 }
